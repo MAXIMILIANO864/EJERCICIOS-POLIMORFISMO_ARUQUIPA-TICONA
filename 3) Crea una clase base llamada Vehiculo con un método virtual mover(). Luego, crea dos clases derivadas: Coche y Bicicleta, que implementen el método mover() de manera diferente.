@@ -1,0 +1,15 @@
+class Vehiculo:
+    def mover(self):
+        pass
+class Coche(Vehiculo):
+    def mover(self):
+        return "El coche está conduciendo en la carretera."
+class Bicicleta(Vehiculo):
+    def mover(self):
+        return "La bicicleta está pedaleando por el parque."
+def mostrar_movimiento(lista_vehiculos):
+    for v in lista_vehiculos:
+        print(v.mover())
+if __name__ == "__main__":
+    vehiculos = [Coche(), Bicicleta(), Coche(), Bicicleta()]
+    mostrar_movimiento(vehiculos)
