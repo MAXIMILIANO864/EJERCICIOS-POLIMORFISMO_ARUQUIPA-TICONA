@@ -1,0 +1,24 @@
+class Pago:
+    def procesarPago(self, monto: float):
+        pass
+class TarjetaCredito(Pago):
+    def __init__(self, titular: str, numero_tarjeta: str):
+        self.titular = titular
+        self.numero_tarjeta = numero_tarjeta
+    def procesarPago(self, monto: float):
+        return f"Procesando pago de ${monto:.2f} con tarjeta de crédito de {self.titular}."
+class PayPal(Pago):
+    def __init__(self, correo: str):
+        self.correo = correo
+    def procesarPago(self, monto: float):
+        return f"Procesando pago de ${monto:.2f} a través de PayPal ({self.correo})."
+def procesar_pagos(lista_pagos, monto: float):
+    for metodo in lista_pagos:
+        print(metodo.procesarPago(monto))
+if __name__ == "__main__":
+    pagos = [
+        TarjetaCredito("Ana Pérez", "1234-5678-9012-3456"),
+        PayPal("usuario@example.com"),
+        TarjetaCredito("Juan Gómez", "9876-5432-1098-7654")
+    ]
+    procesar_pagos(pagos, 150.0)
