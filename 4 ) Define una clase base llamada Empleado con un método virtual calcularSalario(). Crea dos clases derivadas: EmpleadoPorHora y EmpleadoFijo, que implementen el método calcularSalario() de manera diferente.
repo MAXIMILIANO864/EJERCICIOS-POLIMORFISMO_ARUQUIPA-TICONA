@@ -1,0 +1,30 @@
+class Empleado:
+    def calcularSalario(self):
+        pass
+class EmpleadoPorHora(Empleado):
+    def __init__(self, nombre: str, horas_trabajadas: float, tarifa_por_hora: float):
+        self.nombre = nombre
+        self.horas_trabajadas = horas_trabajadas
+        self.tarifa_por_hora = tarifa_por_hora
+    def calcularSalario(self):
+        return self.horas_trabajadas * self.tarifa_por_hora
+class EmpleadoFijo(Empleado):
+    def __init__(self, nombre: str, salario_mensual: float):
+        self.nombre = nombre
+        self.salario_mensual = salario_mensual
+    def calcularSalario(self):
+        return self.salario_mensual
+def calcular_salario_total(lista_empleados):
+    total = 0
+    for e in lista_empleados:
+        total += e.calcularSalario()
+        print(f"{e.nombre} → Salario: ${e.calcularSalario():.2f}")
+    print(f"Salario total: ${total:.2f}")
+if __name__ == "__main__":
+    empleados = [
+        EmpleadoPorHora("Ana", 160, 15),
+        EmpleadoFijo("Juan", 2500),
+        EmpleadoPorHora("Lucía", 120, 20),
+        EmpleadoFijo("Carlos", 3000)
+    ]
+    calcular_salario_total(empleados)
